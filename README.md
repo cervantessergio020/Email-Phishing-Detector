@@ -1,18 +1,18 @@
 # Project1
-# Team Name: Detecing of Phishing email using Ai
+# Team Name: Detecting of Phishing email using Ai
 # Team Members:
 Ronnie, Josh, Sergio
 # Project Pitch:
-Web based tool where Users can detect phishy email usin an ai tool. Users can submit an email and it will clasify whether the email is legitmate or phishy. It offers an easy way to track realtime feedback on whether an email is reliable or not. 
+A web-based tool where Users can detect phishing emails using an AI tool. Users can submit an email, and it will classify whether the email is legitimate or phishing. It offers an easy way to track real-time feedback on whether an email is reliable. 
   
 # Front End:
-This project will use React to buld the front end allowing users to view insights and detect phishy emails. 
+This project will use React to build the front end, allowing users to view insights and detect phishing emails. 
 
 # Back End:
-This project will use MySQL data base and connec to it using Flask. Take the content from the email to help make that detection. 
+This project will use MySQL database and connect to it using Flask (Python). it will take the content from the email and detect whether it is legitimate or not using the integration of machine learning. 
 
 # Functional:
-users can submit email files, users will recieve a verifivation score along with what issues it found, Alert users on analysis results
+users can submit email files users will receive a verification score along with what issues it found. Alert users on analysis results
 
 # Non Functional: 
-Performance:shoud process and anaylze email submission within 10 second, Scalablity: support at least 100 users, Handle multiple scans at once, Security: protect and encrypt user data and automaticlalay delete uplaoded email after analysis, Usability: easy to use
+Performance: Process and analyze email submissions within 10 seconds; scalability: support at least 100 users and handle multiple scans at once. Security: protect and encrypt user data and automatically delete uploaded emails after analysis. Usability: easy to use
