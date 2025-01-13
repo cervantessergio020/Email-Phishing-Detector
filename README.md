@@ -12,6 +12,7 @@ This project will use React to buld the front end allowing users to view insight
 This project will use MySQL data base and connec to it using Flask. Take the content from the email to help make that detection. 
 
 # Functional:
--users can submit email files, users will recieve a verifivation score along with what issues it found, Alert users on analysis results
+users can submit email files, users will recieve a verifivation score along with what issues it found, Alert users on analysis results
 
 # Non Functional: 
+Performance:shoud process and anaylze email submission within 10 second, Scalablity: support at least 100 users, Handle multiple scans at once, Security: protect and encrypt user data and automaticlalay delete uplaoded email after analysis. 
