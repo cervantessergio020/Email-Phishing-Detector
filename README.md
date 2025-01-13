@@ -1,20 +1,17 @@
 # Project1
-# Team Name:
+# Team Name: Detecing of Phishing email using Ai
 # Team Members:
 Ronnie, Josh, Sergio
 # Project Pitch:
-The app provides users with a virtual plant that they can "plant" and take care of by watering daily. The plant grows through different stages (Seed → Sprout → Sapling → Tree) based on user interaction. If the user forgets to water the plant for too long, the growth may reset. This app encourages daily engagement and encourages a simple self-care activity.
+Web based tool where Users can detect phishy email usin an ai tool. Users can submit an email and it will clasify whether the email is legitmate or phishy. It offers an easy way to track realtime feedback on whether an email is reliable or not. 
+  
 # Front End:
-The project will use React Native to create a simple and interactive app. Users can:
+This project will use React to buld the front end allowing users to view insights and detect phishy emails. 
 
-Click a "Plant" button to start growing their virtual plant.
-Click a "Water" button to progress the plant’s growth stage.
-See the current growth stage visually represented on the screen with text or images.
 # Back End:
-The back end will use Flask (Python) to handle simple API requests for managing the plant’s growth logic. It will:
+This project will use MySQL data base and connec to it using Flask. Take the content from the email to help make that detection. 
 
-Serve endpoints to "plant," "water," and check the plant's status.
-Handle the progression of growth stages based on daily watering.
-Reset the plant to an earlier stage if it isn’t watered within a specific time frame.
+# Functional:
+-users can submit email files, users will recieve a verifivation score along with what issues it found, Alert users on analysis results
 
-A NoSQL database will be used to store user logins and plant status.
+# Non Functional: 
