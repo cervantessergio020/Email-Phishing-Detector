@@ -15,7 +15,7 @@ This project will use MySQL database and connect to it using Flask (Python). It 
 Users can submit email files. Users will receive a verification score. Users will also be presented with the issues that were found. Alert users on analysis results.
 
 # Non Functional: 
-Performance: Process and analyze email submissions within 10 seconds. 
-Security: Protect and encrypt user data and automatically delete uploaded emails after analysis. 
-Usability: Easy to use
+Performance: Process and analyze email submissions within 10 seconds.\
+Security: Protect and encrypt user data and automatically delete uploaded emails after analysis.\
+Usability: Easy to use\
 Scalability: Support at least 100 users and handle multiple scans at once. 
