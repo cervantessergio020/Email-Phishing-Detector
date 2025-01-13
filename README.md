@@ -1,5 +1,5 @@
 # Project1
-# Team Name: Detecting of Phishing email using AI
+# Team Name: Detection of Phishing Emails using AI
 # Team Members:
 Ronnie, Josh, Sergio
 # Project Pitch:
