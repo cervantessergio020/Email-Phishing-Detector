@@ -2,6 +2,17 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
+# User class
+
+class User:
+    def __init__(self, user_id, password):
+        self.user_id = user_id
+        self.password = self.hash(password)
+    
+    # TODO: Write the hashing function
+    def hash(self, password):
+        return password
+
 # Existing home endpoint
 @app.route('/')
 def home():
