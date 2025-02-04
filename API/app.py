@@ -5,9 +5,10 @@ app = Flask(__name__)
 # User class
 
 class User:
-    def __init__(self, user_id, name, password):
+    def __init__(self, user_id, name, password, email):
         self.user_id = user_id
         self.name = name
+        self.email = email
         self.password = self.hash(password)
     
     # TODO: Write the hashing function
