@@ -1,4 +1,4 @@
-# Project1
+# Email Phishing Detector
 # Team Name: Detection of Phishing Emails using AI
 # Team Members:
 Ronnie, Josh, Sergio
