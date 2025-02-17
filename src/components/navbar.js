@@ -3,7 +3,6 @@ import Logo from '../assets/phishlogo.png';
 import { Link } from 'react-router-dom';
 import '../styles/NavBar.css';
 
-
 function Navbar() {
   return (
     <div className="navbar">
