@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Home() {
   const [url, setUrl] = useState("");
   const [recentScans, setRecentScans] = useState([]);
+  const [score, setScore] = useState(0);
 
   const handleSubmit = () => {
     if (!url) {
@@ -10,16 +11,25 @@ function Home() {
       return;
     }
 
-    // Simulate a scan result
-    const scanResult = {
-      url,
-      status: Math.random() > 0.5 ? "Safe" : "Phishing",
-      date: new Date().toLocaleString(),
-    };
+    // Fetch a new score each time the button is clicked
+    fetch("http://127.0.0.1:8080/email/score")
+      .then(response => response.json())
+      .then(data => {
+        console.log("New score received:", data.score);
+        setScore(data.score);
 
-    // Update the recent scans list
-    setRecentScans([scanResult, ...recentScans]);
-    setUrl(""); // Clear the input field
+        // Create a new scan result with the updated score
+        const scanResult = {
+          url,
+          score: data.score,
+          status: data.score > 50 ? "Safe" : "Phishing",
+          date: new Date().toLocaleString(),
+        };
+
+        setRecentScans([scanResult, ...recentScans]);
+        setUrl(""); // Clear input field
+      })
+      .catch(error => console.error("Error fetching score:", error));
   };
 
   return (
@@ -50,7 +60,7 @@ function Home() {
           ) : (
             recentScans.map((scan, index) => (
               <li key={index} className="p-2 border-b last:border-none">
-                <strong>{scan.url}</strong> - {scan.status} ({scan.date})
+                <strong>{scan.url}</strong> - {scan.status} {scan.score} ({scan.date})
               </li>
             ))
           )}

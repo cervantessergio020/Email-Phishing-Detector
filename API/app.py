@@ -1,7 +1,11 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
+import random
 
 app = Flask(__name__)
+CORS(app)
 
+'''
 # User class
 
 class User:
@@ -19,9 +23,15 @@ class User:
 @app.route('/')
 def home():
     return jsonify({"message": "Welcome to the Phishing Detection API!"})
+'''
 
-# Mock database for storing email results
 database = {}
+
+@app.route('/email/score', methods=['GET'])
+@cross_origin()
+def get_score():
+    new_score = random.randint(0, 100)
+    return jsonify({'score': new_score})
 
 # /classify endpoint
 @app.route('/classify', methods=['POST'])
