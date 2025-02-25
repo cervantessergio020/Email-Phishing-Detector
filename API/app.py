@@ -32,6 +32,7 @@ database = {}
 def get_score():
     new_score = random.randint(0, 100)
     return jsonify({'score': new_score})
+    # TODO: Take the score and email information and add that email to the database
 
 # /classify endpoint
 @app.route('/classify', methods=['POST'])
