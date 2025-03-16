@@ -24,6 +24,8 @@ def create_prompt(user_input, url_data=None):
         "Step 1: Evaluate the email structure (urgency, impersonation, lack of personalization, threats, etc.).\n"
         "Step 2: Analyze the URL included in the email, supplementing the analysis with the following scan results:\n"
     )
+    
+    prompt = prompt + "Email text:\n" + user_input + "\n\n"
 
     if url_data:
         prompt += (
@@ -47,12 +49,9 @@ def create_prompt(user_input, url_data=None):
 
     return prompt
 
-if __name__ == "__main__":
-    user_email = input("Enter the email text to analyze: ").strip()
-    
-    user_url = input("Enter URL to scan (or press Enter to skip): ").strip()
+def analyze_email(user_email, user_url):
     url_data = None
-
+    
     if user_url:
         print("\nSubmitting URL scan request...")
         scan_uuid, result_api = submit_scan(user_url)  # Submit scan
@@ -70,4 +69,12 @@ if __name__ == "__main__":
             print("Failed to submit scan.")
 
     response = get_openai_response(create_prompt(user_email, url_data))
-    print("\nPhishScan Result:\n", response)
+    return response
+
+if __name__ == "__main__":
+    user_email = input("Enter the email text to analyze: ").strip()
+    
+    user_url = input("Enter URL to scan (or press Enter to skip): ").strip()
+    response = analyze_email(user_email, user_url)
+
+    print("\nPhishScan Result:\n", response)  
