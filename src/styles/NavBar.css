@@ -6,6 +6,18 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 40px; /* Added padding to prevent touching edges */
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.navbar-text {
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  margin: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
 
 .navbar .leftSide {

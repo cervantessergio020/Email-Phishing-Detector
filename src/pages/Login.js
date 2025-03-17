@@ -1,12 +1,32 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-function Login() {
-  const [email, setEmail] = useState("");
+function Login({ setUser }) {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    alert(`Logged in as: ${email}`);
+    try {
+      const response = await fetch("http://127.0.0.1:8000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Invalid credentials");
+      }
+
+      const data = await response.json();
+      setUser(data.user);
+      history.push("/");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -15,10 +35,10 @@ function Login() {
       <div className="input-container">
         <form className="flex flex-col space-y-2 w-64" onSubmit={handleLogin}>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="username"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="border p-2 rounded-lg"
             required
           />

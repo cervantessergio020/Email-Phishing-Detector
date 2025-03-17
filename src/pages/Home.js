@@ -53,6 +53,7 @@ function Home() {
 
   return (
     <div className="flex flex-col items-center p-6">
+      <h2 className="text-lg font-bold mb-4">Enter Email Information</h2>
       {/* Input Fields & Submit Button */}
       <div className="input-container">
         <textarea
