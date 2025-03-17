@@ -69,7 +69,7 @@ def analyze_email(user_email, user_url):
             print("Failed to submit scan.")
 
     response = get_openai_response(create_prompt(user_email, url_data))
-    return response
+    return response.strip()
 
 if __name__ == "__main__":
     user_email = input("Enter the email text to analyze: ").strip()
@@ -77,4 +77,4 @@ if __name__ == "__main__":
     user_url = input("Enter URL to scan (or press Enter to skip): ").strip()
     response = analyze_email(user_email, user_url)
 
-    print("\nPhishScan Result:\n", response)  
+    print("\nPhishScan Results\n" + response)
