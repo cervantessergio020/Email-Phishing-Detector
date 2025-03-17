@@ -20,6 +20,8 @@ pip install passlib
 
 pip install typing
 
+pip install requests
+
 # Run
 
 Navigate to the API folder
