@@ -4,10 +4,12 @@
 
 Install Python
 
-pip install flask
+pip install fastapi
+
+pip install uvicorn[standard]
 
 # Run
 
 Navigate to the API folder
 
-flask run -h 0.0.0.0 -p 8080
+uvicorn main:app --reload
