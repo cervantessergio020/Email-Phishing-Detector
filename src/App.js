@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ResponsiveAppBar from './components/navbar';  // Use lowercase
-import Home from './pages/Home';
-import Login from './pages/Login';
-import './App.css';
+import ResponsiveAppBar from "./components/navbar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import "./App.css";
 
 function App() {
   return (
@@ -20,5 +20,3 @@ function App() {
 }
 
 export default App;
-
-
