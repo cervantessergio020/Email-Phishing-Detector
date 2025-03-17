@@ -1,8 +1,18 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import openapi
 import re
 
 app = FastAPI()
+
+# Allow CORS for all domains (development only)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins; replace with ["http://localhost:3000"] for security
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all HTTP methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get("/email/score")  # Define the correct endpoint
 def get_score(user_email, user_url):
