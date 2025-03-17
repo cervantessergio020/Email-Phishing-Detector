@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 function Home() {
   const [text, setText] = useState("");
   const [url, setUrl] = useState("");
+  const [subject, setSubject] = useState("");
+  const [sender, setSender] = useState("");
   const [recentScans, setRecentScans] = useState([]);
   const [score, setScore] = useState(0);
 
@@ -31,17 +33,20 @@ function Home() {
           url,
           score: data.score,
           status,
+          subject,
+          sender,
           date: new Date().toLocaleString(),
         };
   
         // setRecentScans((prevScans) => [scanResult, ...prevScans]);
         setRecentScans((prevScans) => {
           const updatedScans = [scanResult, ...prevScans];
-          console.log("Updated Recent Scans:", updatedScans); // Debugging line
           return updatedScans;
         });
         setText(""); // Clear input field
         setUrl(""); // Clear input field
+        setSubject(""); // Clear input field
+        setSender(""); // Clear input field
       })
       .catch(error => console.error("Error fetching score:", error));
   };
@@ -63,6 +68,20 @@ function Home() {
           onChange={(e) => setUrl(e.target.value)}
           className="border p-2 rounded-lg w-full max-w-md"
         />
+        <input
+          type="text"
+          placeholder="Enter email subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          className="border p-2 rounded-lg w-full max-w-md"
+        />
+        <input
+          type="text"
+          placeholder="Enter sender's email address"
+          value={sender}
+          onChange={(e) => setSender(e.target.value)}
+          className="border p-2 rounded-lg w-full max-w-md"
+        />
         <button onClick={handleSubmit} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 w-full">
           Scan
         </button>
@@ -77,7 +96,7 @@ function Home() {
           ) : (
             recentScans.map((scan, index) => (
               <li key={index} className="p-2 border-b last:border-none">
-                <strong>{scan.url}</strong> - {scan.status} {scan.score} ({scan.date})
+                <strong>{scan.subject}</strong> - {scan.sender} - {scan.status} {scan.score} ({scan.date})
               </li>
             ))
           )}
