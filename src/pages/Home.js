@@ -14,7 +14,7 @@ function Home() {
       return;
     }
   
-    fetch(`http://127.0.0.1:8000/email/score?user_email=${encodeURIComponent(text)}&user_url=${encodeURIComponent(url)}`)
+    fetch(`http://3.139.235.156:8000/email/score?user_email=${encodeURIComponent(text)}&user_url=${encodeURIComponent(url)}`)
       .then(response => response.json())
       .then(data => {
         console.log("New score received:", data.score);
@@ -43,6 +43,28 @@ function Home() {
           const updatedScans = [scanResult, ...prevScans];
           return updatedScans;
         });
+
+      // Call the FastAPI /emails/ endpoint to store the email
+      fetch("http://3.139.235.156:8000/emails/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: 1, // Replace with actual user ID
+          subject,
+          score: data.score,
+          has_attachment: false, // Modify based on actual data
+          issues: "", // Add any relevant issues if applicable
+          sender,
+        }),
+      })
+        .then((response) => response.json())
+        .then((savedEmail) => {
+          console.log("Email saved:", savedEmail);
+        })
+        .catch((error) => console.error("Error saving email:", error));
+
         setText(""); // Clear input field
         setUrl(""); // Clear input field
         setSubject(""); // Clear input field
