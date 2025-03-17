@@ -8,8 +8,20 @@ pip install fastapi
 
 pip install uvicorn[standard]
 
+pip install sqlalchemy
+
+pip install pydantic
+
+pip install openapi
+
+pip install dotenv
+
+pip install passlib
+
+pip install typing
+
 # Run
 
 Navigate to the API folder
 
-uvicorn main:app --reload
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
