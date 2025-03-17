@@ -7,27 +7,28 @@ function Login({ setUser }) {
   const history = useHistory();
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://127.0.0.1:8000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+  e.preventDefault();
+  try {
+    const response = await fetch("http://3.139.235.156:8000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
 
-      if (!response.ok) {
-        throw new Error("Invalid credentials");
-      }
-
-      const data = await response.json();
-      setUser(data.user);
-      history.push("/");
-    } catch (error) {
-      alert(error.message);
+    if (!response.ok) {
+      throw new Error("Invalid credentials");
     }
-  };
+
+    const data = await response.json();
+    setUser(data.user);
+    localStorage.setItem("user", JSON.stringify(data.user));
+    history.push("/");
+  } catch (error) {
+    alert(error.message);
+  }
+};
 
   return (
     <div className="flex flex-col items-center p-6">

@@ -9,6 +9,7 @@ function Home() {
   const [score, setScore] = useState(0);
 
   const handleSubmit = () => {
+    const storedUser = JSON.parse(localStorage.getItem("user")) || {id:1};
     if (!text) {
       alert("Please enter the email text");
       return;
@@ -51,7 +52,7 @@ function Home() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user_id: 1, // Replace with actual user ID
+          user_id: storedUser.id,
           subject,
           score: data.score,
           has_attachment: false, // Modify based on actual data

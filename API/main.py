@@ -118,24 +118,20 @@ def get_score(user_email: str, user_url: str):
 @app.post("/login")
 def login(user: LoginRequest, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.username == user.username).first()
-    
-    if not existing_user or not verify_password(user.password, existing_user.user_password):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    return {"message": "Login successful", "user": existing_user.username}
-
-# Register a New User (Hashes Password)
-@app.post("/register/")
-def register_user(user: UserCreate, db: Session = Depends(get_db)):
-    existing_user = db.query(User).filter(User.username == user.username).first()
     if existing_user:
-        raise HTTPException(status_code=400, detail="Username already exists")
-    
-    new_user = User(username=user.username, user_password=hash_password(user.user_password))
+        #  If user exists, check password
+        if not verify_password(user.password, existing_user.user_password):
+            raise HTTPException(status_code=401, detail="Invalid credentials")
+        return {"message": "Login successful", "user": {"id": existing_user.user_id, "username": existing_user.username}}
+
+    #  If user does not exist, register them automatically
+    new_user = User(username=user.username, user_password=hash_password(user.password))
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-    return {"message": "User registered successfully", "user": new_user.username}
+
+    return {"message": "User registered and logged in", "user": {"id": new_user.user_id, "username": new_user.username}}
 
 # Create an Email Entry
 @app.post("/emails/")
